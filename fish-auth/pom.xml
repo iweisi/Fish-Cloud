@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>fish-auth</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <description>用户权限认证服务聚合包</description>
+
+    <parent>
+        <groupId>cn.devifish</groupId>
+        <artifactId>fish-cloud</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>fish-auth-common</module>
+        <module>fish-auth-server</module>
+        <module>fish-auth-rpc</module>
+    </modules>
+
+</project>

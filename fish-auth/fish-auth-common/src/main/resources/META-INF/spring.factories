@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.devifish.cloud.auth.common.config.ResourceServiceIgnoreProperties
