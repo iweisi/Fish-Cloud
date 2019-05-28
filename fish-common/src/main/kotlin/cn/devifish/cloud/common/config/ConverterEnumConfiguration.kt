@@ -1,22 +1,19 @@
 package cn.devifish.cloud.common.config
 
 import cn.devifish.cloud.common.convert.ConverterEnumFactory
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.format.FormatterRegistry
 
-
 /**
- * ConverterEnumConfiguration
+ * ConverterEnumConfiguration 枚举转换配置
+ * 注册枚举转换工厂
  *
  * @author Devifish
  */
 @Configuration
-class ConverterEnumConfiguration {
+class ConverterEnumConfiguration(registry: FormatterRegistry) {
 
-    @Bean
-    @Suppress("SpringJavaInjectionPointsAutowiringInspection")
-    fun converterEnumFactory(registry: FormatterRegistry) {
+    init {
         registry.addConverterFactory(ConverterEnumFactory())
     }
 
