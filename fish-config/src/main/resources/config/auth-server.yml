@@ -1,0 +1,17 @@
+security:
+  oauth2:
+    accessTokenValidity: 86400
+    refreshTokenValidity: 259200
+
+# 放行接口
+ignore:
+  urls:
+    - /actuator/**
+    - /webjars/**
+    - /swagger-resources/**
+    - /v2/api-docs
+    - /swagger-ui.html
+
+# Swagger
+swagger:
+  title: OAuth2服务API接口

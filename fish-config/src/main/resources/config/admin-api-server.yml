@@ -1,0 +1,21 @@
+# MyBatis 表前缀配置
+mybatis-plus:
+  config-location: classpath:mybatis-config.xml
+  typeEnumsPackage: com.jxlb.admin.persist.enums
+  global-config:
+    db-config:
+      table-prefix: sys_
+
+# 放行接口
+ignore:
+  urls:
+    - /actuator/**
+    - /webjars/**
+    - /cache/flush
+    - /swagger-resources/**
+    - /v2/api-docs
+    - /swagger-ui.html
+
+# Swagger
+swagger:
+  title: 系统后台API接口

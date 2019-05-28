@@ -1,0 +1,61 @@
+# Feign 配置
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+
+# Ribbon 配置
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+# Eureka 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://fish:devifish@registry-app.server:8000/eureka/
+
+# Redis 配置
+spring:
+  redis:
+    host: common-redis-db.server
+    port: 6379
+    password: 123456
+
+# MyBatis 配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# OAuth2 配置
+security:
+  encryptor: bcrypt
+  oauth2:
+    client:
+      client-id: server-client
+      client-secret: server
+      scope: server
+      grant-type: client_credentials
+      user-authorization-uri: http://oauth-app.server:8010/oauth/authorize
+      access-token-uri: http://oauth-app.server:8010/oauth/token
+    resource:
+      token-info-uri: http://oauth-app.server:8010/oauth/check_token
+
+# Swagger 配置
+swagger:
+  base-package: com.jxlb
