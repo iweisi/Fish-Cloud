@@ -34,11 +34,7 @@ class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     fun exception(exception: Exception): ResultData<Boolean> {
         log.error(exception.message, exception)
-        return ResultData.builder<Boolean>()
-                .code(CommonConstant.ERROR_CODE)
-                .data(java.lang.Boolean.FALSE)
-                .msg(exception.message)
-                .build()
+        return ResultData.err(false, exception.message ?: CommonConstant.DEFAULT_NULL_MSG)
     }
 
     /**
@@ -51,11 +47,7 @@ class ControllerExceptionHandler {
     @ConditionalOnClass(AccessDeniedException::class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     fun accessDeniedException(exception: Exception): ResultData<Boolean> {
-        return ResultData.builder<Boolean>()
-                .code(CommonConstant.ERROR_CODE)
-                .data(java.lang.Boolean.FALSE)
-                .msg("无资源访问权限")
-                .build()
+        return ResultData.err(false, "无资源访问权限")
     }
 
     /**
