@@ -26,7 +26,7 @@ class ConverterEnumFactory : ConverterFactory<String, ConvertibleEnum<*>> {
     override fun <E : ConvertibleEnum<*>> getConverter(clazz: Class<E>): Converter<String, E> {
         val name = clazz.name
         if (!convertMap.containsKey(name)) {
-            val map = clazz.enumConstants.associate { it.getValue().toString() to it }
+            val map = clazz.enumConstants.associate { "${it.getValue()}" to it }
             convertMap[name] = Converter { key -> map[key] }
         }
         return convertMap[name] as Converter<String, E>

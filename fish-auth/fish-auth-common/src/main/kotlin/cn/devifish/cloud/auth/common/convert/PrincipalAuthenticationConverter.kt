@@ -2,6 +2,7 @@ package cn.devifish.cloud.auth.common.convert
 
 import cn.devifish.cloud.auth.common.entity.Principal
 import cn.devifish.cloud.auth.common.util.SecurityUtils
+import cn.devifish.cloud.common.constant.CommonConstant
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
@@ -66,9 +67,9 @@ class PrincipalAuthenticationConverter : UserAuthenticationConverter {
             val deptId = map[DEPT_ID] as Int
             val authorities = getAuthorities(map)
 
-            val principal = Principal(id, username, "N/A", deptId, true,
+            val principal = Principal(id, username, CommonConstant.NA, deptId, true,
                     true, true, true, authorities)
-            UsernamePasswordAuthenticationToken(principal, "N/A", authorities)
+            UsernamePasswordAuthenticationToken(principal, CommonConstant.NA, authorities)
         } else null
     }
 

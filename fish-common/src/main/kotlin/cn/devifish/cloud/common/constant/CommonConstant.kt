@@ -7,6 +7,8 @@ package cn.devifish.cloud.common.constant
  */
 object CommonConstant {
 
+    const val NA = "N/A"
+
     /**
      * 框架公共的时间戳格式
      * 统一时间格式
