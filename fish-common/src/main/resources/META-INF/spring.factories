@@ -3,4 +3,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   cn.devifish.cloud.common.config.JacksonConfiguration,\
   cn.devifish.cloud.common.config.RedisConfiguration,\
   cn.devifish.cloud.common.config.SpringCacheConfiguration,\
-  cn.devifish.cloud.common.config.ConverterEnumConfiguration
+  cn.devifish.cloud.common.config.ConverterEnumConfiguration,\
+  cn.devifish.cloud.common.handler.ControllerExceptionHandler

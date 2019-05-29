@@ -1,5 +1,6 @@
 package cn.devifish.cloud.common.util
 
+import cn.devifish.cloud.common.constant.CommonConstant
 import java.io.Serializable
 
 /**
@@ -12,17 +13,19 @@ import java.io.Serializable
  */
 class ResultData<E> : Serializable {
 
-    val state: Int
+    val code: Int
     val data: E?
     val msg: String
 
-    constructor(state: Int, data: E?, msg: String) {
-        this.state = state
+    constructor(code: Int, data: E?, msg: String) {
+        this.code = code
         this.data = data
         this.msg = msg
     }
 
-    internal constructor(builder: ResultData.Builder<E>) : this(builder.state!!, builder.data, builder.msg!!)
+    internal constructor(builder: ResultData.Builder<E>)
+            : this(builder.code ?: CommonConstant.ERROR_CODE, builder.data,
+            builder.msg ?: CommonConstant.DEFAULT_NULL_MSG)
 
     companion object {
 
@@ -30,6 +33,29 @@ class ResultData<E> : Serializable {
             return ResultData.Builder();
         }
 
+        fun <T> ok(data: T): ResultData<T> {
+            return ok(data, CommonConstant.DEFAULT_SUCCESS_MSG)
+        }
+
+        fun <T> err(data: T): ResultData<T> {
+            return err(data, CommonConstant.DEFAULT_ERROR_MSG)
+        }
+
+        fun <T> warn(data: T): ResultData<T> {
+            return warn(data, CommonConstant.DEFAULT_WARN_MSG)
+        }
+
+        fun <T> ok(data: T, msg: String): ResultData<T> {
+            return ResultData(CommonConstant.SUCCESS_CODE, data, msg)
+        }
+
+        fun <T> err(data: T, msg: String): ResultData<T> {
+            return ResultData(CommonConstant.ERROR_CODE, data, msg)
+        }
+
+        fun <T> warn(data: T, msg: String): ResultData<T> {
+            return ResultData(CommonConstant.WARN_CODE, data, msg)
+        }
     }
 
     /**
@@ -39,21 +65,21 @@ class ResultData<E> : Serializable {
      */
     class Builder<T> internal constructor() {
 
-        internal var state: Int? = null
+        internal var code: Int? = null
         internal var data: T? = null
         internal var msg: String? = null
 
-        fun state(state: Int): Builder<T> {
-            this.state = state
+        fun code(code: Int?): Builder<T> {
+            this.code = code
             return this
         }
 
-        fun data(data: T): Builder<T> {
+        fun data(data: T?): Builder<T> {
             this.data = data
             return this
         }
 
-        fun msg(msg: String): Builder<T> {
+        fun msg(msg: String?): Builder<T> {
             this.msg = msg
             return this
         }
