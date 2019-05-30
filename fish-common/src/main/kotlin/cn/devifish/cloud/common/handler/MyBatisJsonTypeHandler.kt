@@ -19,19 +19,19 @@ class MyBatisJsonTypeHandler<T : Serializable>(
 ) : BaseTypeHandler<T>() {
 
     override fun getNullableResult(rs: ResultSet, columnName: String?): T? {
-        return JsonUtils.toObject(rs.getString(columnName), clazz);
+        return JsonUtils.toObject(rs.getString(columnName), clazz)
     }
 
     override fun getNullableResult(rs: ResultSet, columnIndex: Int): T? {
-        return JsonUtils.toObject(rs.getString(columnIndex), clazz);
+        return JsonUtils.toObject(rs.getString(columnIndex), clazz)
     }
 
     override fun getNullableResult(cs: CallableStatement, columnIndex: Int): T? {
-        return JsonUtils.toObject(cs.getString(columnIndex), clazz);
+        return JsonUtils.toObject(cs.getString(columnIndex), clazz)
     }
 
     override fun setNonNullParameter(ps: PreparedStatement, i: Int, parameter: T, jdbcType: JdbcType) {
-        ps.setString(i, JsonUtils.toJson(jdbcType));
+        ps.setString(i, JsonUtils.toJson(jdbcType))
     }
 
 }

@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils
 /**
  * JsonUtils
  * Json 转换工具 基于 jackson
- * 依赖Spring 环境
+ * 依赖Spring 环境 (非Spring 环境会自动创建ObjectMapper)
  *
  * @see com.fasterxml.jackson.databind.ObjectMapper
  * @author Devifish
@@ -14,15 +14,15 @@ import org.apache.commons.lang3.StringUtils
 object JsonUtils {
 
     private val objectMapper: ObjectMapper by lazy {
-        SpringUtils.getBean(ObjectMapper::class)
+        SpringUtils.getBean(ObjectMapper::class) ?: ObjectMapper()
     }
 
-    fun toJson(data: Any) = objectMapper.writeValueAsString(data)
+    fun toJson(data: Any): String = objectMapper.writeValueAsString(data)
 
     fun <T : Any> toObject(json: String?, clazz: Class<T>): T? {
         return if (StringUtils.isNoneBlank(json)) {
             objectMapper.readValue(json, clazz)
-        }else null
+        } else null
     }
 
 }

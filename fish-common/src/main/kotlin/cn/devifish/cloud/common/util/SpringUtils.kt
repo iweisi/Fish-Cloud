@@ -30,7 +30,7 @@ object SpringUtils : ApplicationContextAware {
      * @return bean
      */
     @Suppress("UNCHECKED_CAST")
-    fun <T : Any> getBean(name: String) = applicationContext.getBean(name) as T
+    fun <T : Any> getBean(name: String): T? = applicationContext.getBean(name) as T
 
     /**
      * 通过Bean Class 获取Bean
@@ -39,7 +39,7 @@ object SpringUtils : ApplicationContextAware {
      * @param <T> type
      * @return bean
      */
-    fun <T : Any> getBean(beanType: Class<T>) = applicationContext.getBean(beanType)
-    fun <T : Any> getBean(beanType: KClass<T>) = applicationContext.getBean(beanType.java)
+    fun <T : Any> getBean(beanType: Class<T>): T? = applicationContext.getBean(beanType)
+    fun <T : Any> getBean(beanType: KClass<T>): T? = applicationContext.getBean(beanType.java)
 
 }

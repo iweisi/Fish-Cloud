@@ -1,6 +1,8 @@
 package cn.devifish.cloud.common.base
 
 import cn.devifish.cloud.common.util.ResultData
+import org.springframework.beans.factory.annotation.Autowired
+import javax.servlet.http.HttpServletRequest
 
 /**
  * BaseController
@@ -13,9 +15,12 @@ abstract class BaseController {
 
     companion object {
         val EMPTY = ResultData.builder<Any>()
-                .state(0)
+                .code(0)
                 .msg("")
                 .build()
     }
+
+    @Autowired(required = false)
+    protected lateinit var request: HttpServletRequest
 
 }
