@@ -8,7 +8,6 @@ import cn.devifish.cloud.common.util.ResultData
 import org.apache.commons.lang3.StringUtils
 import org.springframework.http.HttpHeaders
 import org.springframework.security.oauth2.provider.token.TokenStore
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.security.Principal
 
@@ -18,7 +17,7 @@ import java.security.Principal
  *
  * @author Devifish
  */
-@Controller
+@RestController
 @RequestMapping("/token")
 class TokenController(
         private val tokenStore: TokenStore,
