@@ -33,27 +33,27 @@ class ResultData<E> : Serializable {
             return ResultData.Builder();
         }
 
-        fun <T> ok(data: T): ResultData<T> {
+        fun <T> ok(data: T?): ResultData<T> {
             return ok(data, CommonConstant.DEFAULT_SUCCESS_MSG)
         }
 
-        fun <T> err(data: T): ResultData<T> {
+        fun <T> err(data: T?): ResultData<T> {
             return err(data, CommonConstant.DEFAULT_ERROR_MSG)
         }
 
-        fun <T> warn(data: T): ResultData<T> {
+        fun <T> warn(data: T?): ResultData<T> {
             return warn(data, CommonConstant.DEFAULT_WARN_MSG)
         }
 
-        fun <T> ok(data: T, msg: String): ResultData<T> {
+        fun <T> ok(data: T?, msg: String): ResultData<T> {
             return ResultData(CommonConstant.SUCCESS_CODE, data, msg)
         }
 
-        fun <T> err(data: T, msg: String): ResultData<T> {
+        fun <T> err(data: T?, msg: String): ResultData<T> {
             return ResultData(CommonConstant.ERROR_CODE, data, msg)
         }
 
-        fun <T> warn(data: T, msg: String): ResultData<T> {
+        fun <T> warn(data: T?, msg: String): ResultData<T> {
             return ResultData(CommonConstant.WARN_CODE, data, msg)
         }
     }
