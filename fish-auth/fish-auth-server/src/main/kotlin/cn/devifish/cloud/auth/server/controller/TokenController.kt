@@ -89,7 +89,7 @@ class TokenController(
     fun logoutAllByRole(@RequestParam role: String): ResultData<Boolean> {
         return try {
             val clientDetails = clientDetailsService.listClientDetails()
-            clientDetails.flatMap { client -> tokenStore.findTokensByClientId(client.clientId) }
+            clientDetails.flatMap { tokenStore.findTokensByClientId(it.clientId) }
                     .parallelStream()
                     .filter { token ->
                         val code = SecurityConstant.ROLE_PREFIX + role
