@@ -63,19 +63,17 @@ class TokenController(
     @InnerApi
     @DeleteMapping("/logout-all/username")
     fun logoutAllByUsername(@RequestParam username: String): ResultData<Boolean> {
-        val clientDetails = clientDetailsService.listClientDetails()
-        clientDetails.stream()
-                .map { client ->
-                    val clientId = client.clientId
-                    tokenStore.findTokensByClientIdAndUserName(clientId, username)
-                }
-                .flatMap { it.stream() }
-                .distinct()
-                .forEach { token ->
-                    tokenStore.removeAccessToken(token)
-                    tokenStore.removeRefreshToken(token.refreshToken)
-                }
-        return SUCCESS
+        return try {
+            val clientDetails = clientDetailsService.listClientDetails()
+            clientDetails.flatMap { tokenStore.findTokensByClientIdAndUserName(it.clientId, username) }
+                    .forEach { token ->
+                        tokenStore.removeAccessToken(token)
+                        tokenStore.removeRefreshToken(token.refreshToken)
+                    }
+            SUCCESS
+        } catch (e: Exception) {
+            ERROR
+        }
     }
 
     /**
@@ -89,24 +87,24 @@ class TokenController(
     @InnerApi
     @DeleteMapping("/logout-all/role")
     fun logoutAllByRole(@RequestParam role: String): ResultData<Boolean> {
-        val clientDetails = clientDetailsService.listClientDetails()
-        clientDetails.stream()
-                .map { client -> tokenStore.findTokensByClientId(client.clientId) }
-                .flatMap { it.stream() }
-                .parallel()
-                .filter { token ->
-                    val code = SecurityConstant.ROLE_PREFIX + role
-                    val oAuth2Authentication = tokenStore.readAuthentication(token)
-                    oAuth2Authentication.authorities.any { code == it.authority }
-                }
-                .distinct()
-                .forEach { token ->
-                    tokenStore.removeAccessToken(token)
-                    tokenStore.removeRefreshToken(token.refreshToken)
-                }
-
-        return SUCCESS
-
+        return try {
+            val clientDetails = clientDetailsService.listClientDetails()
+            clientDetails.flatMap { client -> tokenStore.findTokensByClientId(client.clientId) }
+                    .parallelStream()
+                    .filter { token ->
+                        val code = SecurityConstant.ROLE_PREFIX + role
+                        val oAuth2Authentication = tokenStore.readAuthentication(token)
+                        oAuth2Authentication.authorities.any { code == it.authority }
+                    }
+                    .distinct()
+                    .forEach { token ->
+                        tokenStore.removeAccessToken(token)
+                        tokenStore.removeRefreshToken(token.refreshToken)
+                    }
+            SUCCESS
+        } catch (e: Exception) {
+            ERROR
+        }
     }
 
 }
