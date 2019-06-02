@@ -24,6 +24,7 @@
         <module>fish-common</module>
         <module>fish-registry</module>
         <module>fish-config</module>
+        <module>fish-gateway</module>
         <module>fish-auth</module>
         <module>fish-admin</module>
     </modules>

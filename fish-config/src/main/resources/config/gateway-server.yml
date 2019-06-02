@@ -1,0 +1,40 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+      # 全局跨域配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            maxAge: 1800
+
+      # 路由配置
+      routes:
+        # OAuth鉴权
+        - id: oauth-route
+          uri: lb://auth-server
+          predicates:
+            - Path=/oauth/**
+          filters:
+            - StripPrefix=0
+        - id: token-route
+          uri: lb://auth-server
+          predicates:
+            - Path=/token/**
+          filters:
+            - StripPrefix=0
+
+        # Admin服务
+        - id: admin-route
+          uri: lb://admin-api-server
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=1

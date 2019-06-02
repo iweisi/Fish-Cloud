@@ -23,6 +23,11 @@
         </dependency>
         <dependency>
             <groupId>cn.devifish.cloud</groupId>
+            <artifactId>fish-admin-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.devifish.cloud</groupId>
             <artifactId>fish-auth-common</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -31,8 +36,6 @@
             <artifactId>fish-auth-rpc</artifactId>
             <version>1.0.0</version>
         </dependency>
-
-
     </dependencies>
 
 </project>

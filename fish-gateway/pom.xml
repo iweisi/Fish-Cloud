@@ -3,38 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fish-auth-server</artifactId>
+    <artifactId>fish-gateway</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <description>用户权限认证服务</description>
+    <description>路由网关，反向代理服务访问</description>
 
     <parent>
         <groupId>cn.devifish.cloud</groupId>
-        <artifactId>fish-auth</artifactId>
+        <artifactId>fish-cloud</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.devifish.cloud</groupId>
-            <artifactId>fish-auth-common</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.devifish.cloud</groupId>
-            <artifactId>fish-admin-rpc</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
         <!--spring-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -44,18 +29,9 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
-
-        <!--undertow 容器-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-
-        <!--mysql jdbc-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
     </dependencies>
 

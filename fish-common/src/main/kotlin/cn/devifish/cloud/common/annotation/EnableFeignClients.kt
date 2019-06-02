@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients as EnableSpringFei
 
 /**
  * EnableFeignClients
+ * Spring Open Feign 自定义注解
  *
  * @author Devifish
  */
