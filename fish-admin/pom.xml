@@ -11,14 +11,14 @@
     <description>项目系统后台服务聚合包</description>
 
     <parent>
-        <groupId>cn.devifish</groupId>
+        <groupId>cn.devifish.cloud</groupId>
         <artifactId>fish-cloud</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <modules>
         <module>fish-admin-server</module>
-        <module>fish-admin-persist</module>
+        <module>fish-admin-common</module>
         <module>fish-admin-rpc</module>
     </modules>
 

@@ -10,24 +10,24 @@
     <description>项目系统后台服务 api</description>
 
     <parent>
-        <groupId>cn.devifish</groupId>
+        <groupId>cn.devifish.cloud</groupId>
         <artifactId>fish-admin</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>cn.devifish</groupId>
+            <groupId>cn.devifish.cloud</groupId>
             <artifactId>fish-common</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.devifish</groupId>
+            <groupId>cn.devifish.cloud</groupId>
             <artifactId>fish-auth-common</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.devifish</groupId>
+            <groupId>cn.devifish.cloud</groupId>
             <artifactId>fish-auth-rpc</artifactId>
             <version>1.0.0</version>
         </dependency>

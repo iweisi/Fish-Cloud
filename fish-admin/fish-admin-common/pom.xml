@@ -3,16 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fish-admin-persist</artifactId>
+    <artifactId>fish-admin-common</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <description>项目系统后台持久层</description>
+    <description>项目系统后台公共组件</description>
 
     <parent>
-        <groupId>cn.devifish</groupId>
+        <groupId>cn.devifish.cloud</groupId>
         <artifactId>fish-admin</artifactId>
         <version>1.0.0</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.devifish.cloud</groupId>
+            <artifactId>fish-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

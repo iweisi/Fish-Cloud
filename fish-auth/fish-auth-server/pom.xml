@@ -10,14 +10,14 @@
     <description>用户权限认证服务</description>
 
     <parent>
-        <groupId>cn.devifish</groupId>
+        <groupId>cn.devifish.cloud</groupId>
         <artifactId>fish-auth</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>cn.devifish</groupId>
+            <groupId>cn.devifish.cloud</groupId>
             <artifactId>fish-auth-common</artifactId>
             <version>1.0.0</version>
         </dependency>

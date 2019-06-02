@@ -10,7 +10,7 @@
     <description>项目配置服务</description>
 
     <parent>
-        <groupId>cn.devifish</groupId>
+        <groupId>cn.devifish.cloud</groupId>
         <artifactId>fish-cloud</artifactId>
         <version>1.0.0</version>
     </parent>
