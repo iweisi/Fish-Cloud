@@ -1,0 +1,14 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: admin-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://config-app.server:8010
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      fail-fast: true

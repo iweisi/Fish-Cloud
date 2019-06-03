@@ -7,24 +7,24 @@ import cn.devifish.cloud.admin.common.entity.enums.MenuType
  *
  * @author Devifish
  */
-class MenuVo {
+data class MenuVo(
 
-    /*菜单名*/
-    var name: String? = null
+        /*菜单名*/
+        var name: String? = null,
 
-    /*图标*/
-    var icon: String? = null
+        /*图标*/
+        var icon: String? = null,
 
-    /*路径*/
-    var path: String? = null
+        /*路径*/
+        var path: String? = null,
 
-    /*菜单类型*/
-    var type: MenuType? = null
+        /*菜单类型*/
+        var type: MenuType? = null,
 
-    /*前端组件*/
-    var component: String? = null
+        /*前端组件*/
+        var component: String? = null,
 
-    /*子菜单*/
-    var children: List<MenuVo>? = null
+        /*子菜单*/
+        var children: ArrayList<MenuVo>? = null
 
-}
+)

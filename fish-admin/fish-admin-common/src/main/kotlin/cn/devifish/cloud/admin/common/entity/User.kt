@@ -10,36 +10,36 @@ import javax.validation.constraints.NotBlank
  *
  * @author Devifish
  */
-class User: BaseEntity() {
+data class User(
 
-    /*用户名*/
-    @NotBlank
-    var username: String? = null
+        /*用户名*/
+        @NotBlank
+        var username: String? = null,
 
-    /*密码*/
-    @Min(6)
-    var password: String? = null
+        /*密码*/
+        @Min(6)
+        var password: String? = null,
 
-    /*昵称*/
-    var nickname: String? = null
+        /*昵称*/
+        var nickname: String? = null,
 
-    /*真实姓名*/
-    var realname: String? = null
+        /*真实姓名*/
+        var realname: String? = null,
 
-    /*部门ID*/
-    var deptId: Int? = null
+        /*部门ID*/
+        var deptId: Int? = null,
 
-    /*头像*/
-    var avatar: String? = null
+        /*头像*/
+        var avatar: String? = null,
 
-    /*电话号码*/
-    var phone: String? = null
+        /*电话号码*/
+        var phone: String? = null,
 
-    /*电子邮箱*/
-    @Email
-    var email: String? = null
+        /*电子邮箱*/
+        @Email
+        var email: String? = null,
 
-    /*锁定标记*/
-    var lockFlag: Boolean? = null
+        /*锁定标记*/
+        var lockFlag: Boolean? = null
 
-}
+) : BaseEntity()

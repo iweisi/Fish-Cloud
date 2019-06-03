@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--suppress SqlNoDataSourceInspection, SqlResolve -->
+<mapper namespace="cn.devifish.cloud.admin.server.mapper.UserMapper">
+
+    <resultMap id="baseResultMap" type="cn.devifish.cloud.admin.common.entity.User">
+        <id column="user_id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="nickname" property="nickname"/>
+        <result column="realname" property="realname"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="avatar" property="avatar"/>
+        <result column="lock_flag" property="lockFlag"/>
+        <result column="u_create_time" property="createTime"/>
+        <result column="u_update_time" property="updateTime"/>
+        <result column="u_delete_flag" property="deleteFlag"/>
+    </resultMap>
+
+    <sql id="baseSQL">
+        `user`.id AS user_id,
+        `user`.username,
+        `user`.password,
+        `user`.dept_id,
+        `user`.nickname,
+        `user`.realname,
+        `user`.email,
+        `user`.phone,
+        `user`.avatar,
+        `user`.lock_flag,
+        `user`.create_time AS u_create_time,
+        `user`.update_time AS u_update_time,
+        `user`.delete_flag AS u_delete_flag
+    </sql>
+
+    <select id="findUserByUsername" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseSQL"/>
+        FROM
+            sys_user AS `user`
+        WHERE
+            `user`.username = #{username}
+            AND `user`.delete_flag != 1
+    </select>
+
+    <select id="countUsername" resultType="java.lang.Integer">
+        SELECT
+            count(0)
+        FROM
+            sys_user AS u
+        WHERE
+            u.username = #{username}
+    </select>
+
+</mapper>

@@ -38,10 +38,10 @@ class AuthorizationServerConfiguration(
 ) : AuthorizationServerConfigurerAdapter() {
 
     @Value("\${security.oauth2.accessTokenValidity}")
-    var accessTokenValidity: Int = 3600
+    private var accessTokenValidity: Int = 0
 
     @Value("\${security.oauth2.refreshTokenValidity}")
-    var refreshTokenValidity: Int = 604800
+    private var refreshTokenValidity: Int = 0
 
     /**
      * 开启权限认证接口

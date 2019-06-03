@@ -55,7 +55,3 @@ security:
       access-token-uri: http://oauth-app.server:8010/oauth/token
     resource:
       token-info-uri: http://oauth-app.server:8010/oauth/check_token
-
-# Swagger 配置
-swagger:
-  base-package: com.jxlb
