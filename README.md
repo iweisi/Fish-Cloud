@@ -1,5 +1,5 @@
 [![star](https://img.shields.io/github/stars/Devifish/Fish-Cloud.svg?logo=github)](https://github.com/Devifish/Fish-Cloud)
-[![star](https://gitee.com/Devifish/Fish-Cloud/badge/star.svg?theme=gray)](https://gitee.com/Devifish/Fish-Cloud/stargazers)
+[![star](https://gitee.com/Devifish/Fish-Cloud/badge/star.svg)](https://gitee.com/Devifish/Fish-Cloud)
 [![language](https://img.shields.io/badge/language-Kotlin-yellow.svg)](https://kotlinlang.org/)
 [![license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
