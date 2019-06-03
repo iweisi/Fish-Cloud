@@ -51,7 +51,7 @@ security:
       client-secret: server
       scope: server
       grant-type: client_credentials
-      user-authorization-uri: http://oauth-app.server:8010/oauth/authorize
-      access-token-uri: http://oauth-app.server:8010/oauth/token
+      user-authorization-uri: http://oauth-app.server:8020/oauth/authorize
+      access-token-uri: http://oauth-app.server:8020/oauth/token
     resource:
-      token-info-uri: http://oauth-app.server:8010/oauth/check_token
+      token-info-uri: http://oauth-app.server:8020/oauth/check_token

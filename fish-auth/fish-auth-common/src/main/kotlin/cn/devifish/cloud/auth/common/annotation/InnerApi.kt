@@ -12,5 +12,5 @@ import org.springframework.security.access.prepost.PreAuthorize
  */
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-@PreAuthorize("principal == ${SecurityConstant.SERVER_CLIENT}")
+@PreAuthorize("principal == '${SecurityConstant.SERVER_CLIENT}'")
 annotation class InnerApi

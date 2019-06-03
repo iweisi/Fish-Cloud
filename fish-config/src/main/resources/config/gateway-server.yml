@@ -33,7 +33,7 @@ spring:
 
         # Admin服务
         - id: admin-route
-          uri: lb://admin-api-server
+          uri: lb://admin-server
           predicates:
             - Path=/admin/**
           filters:

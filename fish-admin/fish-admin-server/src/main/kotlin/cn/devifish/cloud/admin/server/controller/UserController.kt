@@ -2,6 +2,7 @@ package cn.devifish.cloud.admin.server.controller
 
 import cn.devifish.cloud.admin.common.entity.User
 import cn.devifish.cloud.admin.server.service.UserService
+import cn.devifish.cloud.auth.common.annotation.InnerApi
 import cn.devifish.cloud.auth.common.util.PasswordEncoderFactory
 import cn.devifish.cloud.auth.common.util.SecurityUtils
 import cn.devifish.cloud.auth.rpc.RemoteTokenService
@@ -50,6 +51,20 @@ class UserController(
     }
 
     /**
+     * 根据用户名查询用户信息
+     * 内部接口
+     *
+     * @param username 用户名
+     * @return UserDetails
+     */
+    @InnerApi
+    @GetMapping("/find/{username}")
+    fun find(@PathVariable username: String): ResultData<User> {
+        val userInfo = userService.findUserByUsername(username)
+        return builderResultData(userInfo)
+    }
+
+    /**
      * 根据用户ID删除用户
      *
      * @param id 用户ID
@@ -57,9 +72,9 @@ class UserController(
      */
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/delete/{id}")
-    fun delete(@PathVariable id: Int?): ResultData<Boolean> {
+    fun delete(@PathVariable id: Int): ResultData<Boolean> {
         val user = userService.getById(id)
-        return if (user?.username != null) {
+        return if (user != null) {
             remoteTokenService.logoutAllByUsername(user.username!!)
             userService.removeById(id)
             SUCCESS
