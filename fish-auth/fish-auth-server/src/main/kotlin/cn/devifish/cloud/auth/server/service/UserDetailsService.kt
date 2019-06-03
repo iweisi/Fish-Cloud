@@ -27,8 +27,8 @@ class UserDetailsService(
      * @return UserDetails 用户信息
      * @throws UsernameNotFoundException 用户名未找到异常
      */
-    override fun loadUserByUsername(username: String?): UserDetails {
-        val resultData = remoteUserService.find(username!!)
+    override fun loadUserByUsername(username: String): UserDetails {
+        val resultData = remoteUserService.find(username)
         if (resultData.isNotNull()) {
             val user: User = resultData.data!!
 
