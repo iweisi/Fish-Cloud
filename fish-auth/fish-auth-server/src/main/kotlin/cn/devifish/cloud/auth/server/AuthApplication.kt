@@ -1,8 +1,8 @@
 package cn.devifish.cloud.auth.server
 
+import cn.devifish.cloud.common.annotation.EnableFeignClients
 import org.springframework.boot.runApplication
 import org.springframework.cloud.client.SpringCloudApplication
-import org.springframework.cloud.openfeign.EnableFeignClients
 
 /**
  * AuthApplication 用户认证服务

@@ -21,7 +21,7 @@ class Principal : User {
             false, false, false,
             Collections.emptySet())
 
-    constructor(id: Int, username: String?, password: String?, deptId: Int,
+    constructor(id: Int, username: String, password: String, deptId: Int,
                 enabled: Boolean, accountNonExpired: Boolean,
                 credentialsNonExpired: Boolean, accountNonLocked: Boolean,
                 authorities: Collection<GrantedAuthority>?)

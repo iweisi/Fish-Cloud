@@ -1,6 +1,7 @@
 package cn.devifish.cloud.common.util
 
 import cn.devifish.cloud.common.constant.CommonConstant
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.io.Serializable
 
 /**
@@ -57,6 +58,15 @@ class ResultData<E> : Serializable {
             return ResultData(CommonConstant.WARN_CODE, data, msg)
         }
     }
+
+    @JsonIgnore
+    fun isOk(): Boolean = CommonConstant.SUCCESS_CODE == this.code
+
+    @JsonIgnore
+    fun isNotNull(): Boolean = this.data != null
+
+    @JsonIgnore
+    fun isNull(): Boolean = this.data == null
 
     /**
      * Builder 构造器
