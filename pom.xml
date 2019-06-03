@@ -132,6 +132,7 @@
     <build>
         <sourceDirectory>${basedir}/src/main/kotlin</sourceDirectory>
 
+        <!--公共插件-->
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

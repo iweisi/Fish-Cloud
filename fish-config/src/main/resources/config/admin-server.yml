@@ -1,7 +1,7 @@
 # MyBatis 表前缀配置
 mybatis-plus:
   config-location: classpath:mybatis-config.xml
-  typeEnumsPackage: com.jxlb.admin.persist.enums
+  typeEnumsPackage: cn.devifish.cloud.admin.common.entity.enums
   global-config:
     db-config:
       table-prefix: sys_
