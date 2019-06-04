@@ -12,4 +12,4 @@ RUN echo 'Asia/Shanghai' >/etc/timezone
 
 ENV JAVA_OPTS="-Xms128m -Xmx256m -Xss256k -XX:+UseConcMarkSweepGC -Djava.security.egd=file:/dev/./urandom"
 ENV SPRING_OPTS=""
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS $SPRING_OPTS -jar fish-config.jar"]
+ENTRYPOINT ["sh", "-c", "sleep 30 && java $JAVA_OPTS $SPRING_OPTS -jar fish-config.jar"]

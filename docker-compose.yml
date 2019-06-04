@@ -20,6 +20,8 @@ services:
     restart: always
     ports:
       - 8010:8010
+    links:
+      - fish-registry:registry-app.server
 
   fish-auth:
     image: fish-auth
@@ -30,6 +32,9 @@ services:
     restart: always
     ports:
       - 8020:8020
+    links:
+      - fish-registry:registry-app.server
+      - fish-config:config-app.server
 
   fish-admin:
     image: fish-admin
@@ -40,6 +45,10 @@ services:
     restart: always
     ports:
       - 8100:8100
+    links:
+      - fish-registry:registry-app.server
+      - fish-config:config-app.server
+      - fish-auth:oauth-app.server
 
   fish-gateway:
     image: fish-gateway
@@ -50,3 +59,7 @@ services:
     restart: always
     ports:
       - 8080:8080
+    links:
+      - fish-registry:registry-app.server
+      - fish-config:config-app.server
+      - fish-auth:oauth-app.server
