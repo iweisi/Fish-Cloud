@@ -1,6 +1,7 @@
 package cn.devifish.cloud.admin.server.service
 
 import cn.devifish.cloud.admin.common.entity.Menu
+import com.baomidou.mybatisplus.extension.service.IService
 
 /**
  * MenuService
@@ -8,7 +9,7 @@ import cn.devifish.cloud.admin.common.entity.Menu
  *
  * @author Devifish
  */
-interface MenuService {
+interface MenuService: IService<Menu> {
 
     /**
      * 获取该级节点的所有子菜单ID

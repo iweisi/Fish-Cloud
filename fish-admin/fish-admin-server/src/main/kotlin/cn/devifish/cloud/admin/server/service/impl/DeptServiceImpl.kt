@@ -61,7 +61,7 @@ class DeptServiceImpl: ServiceImpl<DeptMapper, Dept>(), DeptService {
 
     @Cacheable(value = [CacheConstant.DEPT_DATA_KEY], key = "'ALL_DEPT'")
     override fun list(): List<Dept> {
-        return super.list()
+        return super<DeptService>.list()
     }
 
     @CacheEvict(value = [CacheConstant.DEPT_DATA_KEY], allEntries = true)

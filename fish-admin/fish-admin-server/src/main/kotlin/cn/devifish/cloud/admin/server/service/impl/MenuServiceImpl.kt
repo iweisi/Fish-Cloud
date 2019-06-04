@@ -36,7 +36,7 @@ class MenuServiceImpl: ServiceImpl<MenuMapper, Menu>(), MenuService {
 
     @Cacheable(value = [CacheConstant.MENU_DATA_KEY], key = "'ALL_MENU'")
     override fun list(): MutableList<Menu> {
-        return super.list()
+        return super<MenuService>.list()
     }
 
     @CacheEvict(value = [CacheConstant.MENU_DATA_KEY], allEntries = true)

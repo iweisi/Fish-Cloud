@@ -3,6 +3,7 @@ package cn.devifish.cloud.admin.server.service
 import cn.devifish.cloud.admin.common.entity.Role
 import com.baomidou.mybatisplus.core.metadata.IPage
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page
+import com.baomidou.mybatisplus.extension.service.IService
 
 /**
  * RoleService
@@ -10,7 +11,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page
  *
  * @author Devifish
  */
-interface RoleService {
+interface RoleService: IService<Role> {
 
     /**
      * 通过用户ID查询角色信息

@@ -1,6 +1,7 @@
 package cn.devifish.cloud.admin.server.service
 
 import cn.devifish.cloud.admin.common.entity.Dept
+import com.baomidou.mybatisplus.extension.service.IService
 
 /**
  * DeptService
@@ -8,7 +9,7 @@ import cn.devifish.cloud.admin.common.entity.Dept
  *
  * @author Devifish
  */
-interface DeptService {
+interface DeptService: IService<Dept> {
 
     /**
      * 更新部门层级字段
