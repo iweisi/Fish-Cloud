@@ -8,7 +8,8 @@ services:
       context: ./fish-registry/target
       dockerfile: ../Dockerfile
     restart: always
-    network_mode: "host"
+    ports:
+      - 8000:8000
 
   fish-config:
     image: fish-config
@@ -17,7 +18,10 @@ services:
       context: ./fish-config/target
       dockerfile: ../Dockerfile
     restart: always
-    network_mode: "host"
+    ports:
+      - 8010:8010
+    links:
+      - fish-registry:registry-app.server
 
   fish-auth:
     image: fish-auth
