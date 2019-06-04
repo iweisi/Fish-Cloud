@@ -11,6 +11,16 @@
     <name>fish-cloud</name>
     <description>Demo project for Spring Boot</description>
 
+    <developers>
+        <developer>
+            <name>Devifish</name>
+            <email>devifish@outlook.com</email>
+            <roles>
+                <role>leader</role>
+            </roles>
+        </developer>
+    </developers>
+
     <!--spring boot默认配置-->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -159,13 +169,13 @@
     <!--默认使用阿里云主仓库-->
     <repositories>
         <repository>
-            <id>AliYun</id>
-            <name>AliYun</name>
+            <id>ali-yun-repository</id>
+            <name>AliYun Repository</name>
             <url>https://maven.aliyun.com/repository/public</url>
         </repository>
         <repository>
-            <id>MvnRepository</id>
-            <name>MvnRepository</name>
+            <id>mvn-repository</id>
+            <name>Mvn Repository</name>
             <url>http://central.maven.org/maven2/</url>
         </repository>
         <repository>
