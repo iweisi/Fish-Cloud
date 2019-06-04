@@ -7,9 +7,9 @@ mvn package
 
 # 停止并清除旧的Docker容器及镜像
 docker-compose stop
-docker-compose rm
+docker-compose rm -f
 docker-compose build
 docker rmi $(docker images -f "dangling=true" -q)
 
-# 运行
-docker-compose up
+# 运行服务
+docker-compose up -d
