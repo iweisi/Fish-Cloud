@@ -2,6 +2,7 @@ package cn.devifish.cloud.common.util
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.commons.lang3.StringUtils
+import kotlin.reflect.KClass
 
 /**
  * JsonUtils
@@ -24,5 +25,7 @@ object JsonUtils {
             objectMapper.readValue(json, clazz)
         } else null
     }
+
+    fun <T : Any> toObject(json: String?, clazz: KClass<T>): T? = toObject(json, clazz.java)
 
 }

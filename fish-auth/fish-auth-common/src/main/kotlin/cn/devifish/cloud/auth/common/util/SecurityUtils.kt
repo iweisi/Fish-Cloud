@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
 import java.util.*
-import java.util.stream.Collectors
 
 /**
  * Spring Security 工具类
@@ -51,11 +50,10 @@ object SecurityUtils {
     fun searchAuthorities(authorities: Collection<GrantedAuthority>?, prefix: String): List<String> {
         if (authorities == null || authorities.isEmpty()) return Collections.emptyList()
 
-        return authorities.stream()
-                .map { it.authority }
-                .filter { authority -> StringUtils.startsWith(authority, prefix) }
-                .map { authority -> StringUtils.removeStart(authority, prefix) }
-                .collect(Collectors.toList())
+        return authorities.asSequence()
+                .filter { StringUtils.startsWith(it.authority, prefix) }
+                .map { StringUtils.removeStart(it.authority, prefix) }
+                .toList()
     }
 
     /**
@@ -84,10 +82,10 @@ object SecurityUtils {
     fun getRoles(): Set<String> {
         val authorities = authentication.authorities
         return if (authorities != null && authorities.isNotEmpty()) {
-            authorities.stream()
-                    .filter { authority -> authority is RoleAuthority }
-                    .map { authority -> (authority as RoleAuthority).code }
-                    .collect(Collectors.toSet())
+            authorities.asSequence()
+                    .filter { it is RoleAuthority }
+                    .map { (it as RoleAuthority).code }
+                    .toSet()
         } else Collections.emptySet()
     }
 
@@ -99,10 +97,10 @@ object SecurityUtils {
     fun getPermissions(): Set<String> {
         val authorities = authentication.authorities
         return if (authorities != null && authorities.isNotEmpty()) {
-            authorities.stream()
-                    .filter { authority -> authority is SimpleGrantedAuthority }
+            authorities.asSequence()
+                    .filter { it is SimpleGrantedAuthority }
                     .map { it.authority }
-                    .collect(Collectors.toSet())
+                    .toSet()
         } else Collections.emptySet()
     }
 
