@@ -65,6 +65,18 @@ class UserController(
     }
 
     /**
+     * 检查用户名是否存在
+     *
+     * @param username 用户名
+     * @return boolean
+     */
+    @GetMapping("/exits/{username}")
+    fun exits(@PathVariable username: String): ResultData<Boolean> {
+        val exitsUsername = userService.exitsUsername(username)
+        return ResultData.ok(exitsUsername)
+    }
+
+    /**
      * 根据用户ID删除用户
      *
      * @param id 用户ID

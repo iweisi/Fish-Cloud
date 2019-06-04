@@ -23,6 +23,11 @@ class UserServiceImpl: ServiceImpl<UserMapper, User>(), UserService {
      */
     override fun findUserByUsername(username: String): User = baseMapper.findUserByUsername(username)
 
-
-
+    /**
+     * 检查用户是否存在
+     *
+     * @param username 用户名
+     * @return boolean
+     */
+    override fun exitsUsername(username: String): Boolean = baseMapper.countUsername(username) > 0
 }
