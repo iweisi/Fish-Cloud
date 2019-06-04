@@ -141,6 +141,8 @@
 
     <build>
         <sourceDirectory>${basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test/kotlin</testSourceDirectory>
+        <finalName>${project.artifactId}</finalName>
 
         <!--公共插件-->
         <plugins>
