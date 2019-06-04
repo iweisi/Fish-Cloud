@@ -30,11 +30,7 @@ services:
       context: ./fish-auth/fish-auth-server/target
       dockerfile: ../Dockerfile
     restart: always
-    ports:
-      - 8020:8020
-    links:
-      - fish-registry:registry-app.server
-      - fish-config:config-app.server
+    network_mode: "host"
 
   fish-admin:
     image: fish-admin
@@ -43,12 +39,7 @@ services:
       context: ./fish-admin/fish-admin-server/target
       dockerfile: ../Dockerfile
     restart: always
-    ports:
-      - 8100:8100
-    links:
-      - fish-registry:registry-app.server
-      - fish-config:config-app.server
-      - fish-auth:oauth-app.server
+    network_mode: "host"
 
   fish-gateway:
     image: fish-gateway
@@ -57,9 +48,4 @@ services:
       context: ./fish-gateway/target
       dockerfile: ../Dockerfile
     restart: always
-    ports:
-      - 8080:8080
-    links:
-      - fish-registry:registry-app.server
-      - fish-config:config-app.server
-      - fish-auth:oauth-app.server
+    network_mode: "host"

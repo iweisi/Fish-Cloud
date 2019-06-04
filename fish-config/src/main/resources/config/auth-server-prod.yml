@@ -1,0 +1,8 @@
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://common-mysql-db.server:3306/lanbo_sys?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: fish
+    password: fish
