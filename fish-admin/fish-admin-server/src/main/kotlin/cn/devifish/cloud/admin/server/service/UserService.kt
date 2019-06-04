@@ -1,7 +1,6 @@
 package cn.devifish.cloud.admin.server.service
 
 import cn.devifish.cloud.admin.common.entity.User
-import com.baomidou.mybatisplus.extension.service.IService
 
 /**
  * UserService
@@ -9,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService
  *
  * @author Devifish
  */
-interface UserService: IService<User> {
+interface UserService {
 
     /**
      * 通过用户名查询用户

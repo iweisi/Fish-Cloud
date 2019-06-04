@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--suppress SqlNoDataSourceInspection, SqlResolve -->
+<mapper namespace="cn.devifish.cloud.admin.server.mapper.MenuMapper">
+
+    <resultMap id="baseResultMap" type="cn.devifish.cloud.admin.common.entity.Menu">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="path" property="path"/>
+        <result column="type" property="type"/>
+        <result column="component" property="component"/>
+        <result column="permission" property="permission"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="sort" property="sort"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="delete_flag" property="deleteFlag"/>
+    </resultMap>
+
+    <sql id="baseSQL">
+        `m`.id,
+        `m`.name,
+        `m`.path,
+        `m`.type,
+        `m`.component,
+        `m`.permission,
+        `m`.parent_id,
+        `m`.sort,
+        `m`.create_time,
+        `m`.update_time,
+        `m`.delete_flag
+    </sql>
+
+    <select id="findAllChildId" resultType="java.lang.Integer">
+        SELECT id
+        FROM (
+                 SELECT t1.id, IF(FIND_IN_SET(parent_id, @pids) > 0, @pids := CONCAT(@pids, ',', id), 0) AS ischild
+                 FROM (
+                          SELECT id, parent_id
+                          FROM sys_menu t
+                          WHERE t.delete_flag != 1
+                          ORDER BY parent_id, id
+                      ) t1,
+                      (
+                          SELECT @pids := #{id}
+                      ) t2
+             ) t3
+        WHERE ischild != 0
+    </select>
+
+    <select id="findChildMenuList" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseSQL"/>
+        FROM
+            sys_menu as `m`
+        WHERE
+            `m`.parent_id = #{id}
+            AND `m`.delete_flag != 1
+    </select>
+
+</mapper>

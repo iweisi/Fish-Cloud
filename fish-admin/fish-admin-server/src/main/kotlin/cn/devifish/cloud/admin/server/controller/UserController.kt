@@ -1,6 +1,10 @@
 package cn.devifish.cloud.admin.server.controller
 
+import cn.devifish.cloud.admin.common.entity.Role
 import cn.devifish.cloud.admin.common.entity.User
+import cn.devifish.cloud.admin.common.entity.vo.UserVo
+import cn.devifish.cloud.admin.server.service.DeptService
+import cn.devifish.cloud.admin.server.service.RoleService
 import cn.devifish.cloud.admin.server.service.UserService
 import cn.devifish.cloud.auth.common.annotation.InnerApi
 import cn.devifish.cloud.auth.common.util.PasswordEncoderFactory
@@ -8,6 +12,8 @@ import cn.devifish.cloud.auth.common.util.SecurityUtils
 import cn.devifish.cloud.auth.rpc.RemoteTokenService
 import cn.devifish.cloud.common.base.BaseController
 import cn.devifish.cloud.common.util.ResultData
+import com.baomidou.mybatisplus.core.metadata.IPage
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -24,6 +30,8 @@ import javax.annotation.PostConstruct
 @RequestMapping("/user")
 class UserController(
         private val userService: UserService,
+        private val roleService: RoleService,
+        private val deptService: DeptService,
         private val remoteTokenService: RemoteTokenService
 ): BaseController() {
 
@@ -48,6 +56,21 @@ class UserController(
             val user = userService.getById(principal.id)
             builderResultData(user)
         }else emptyResultData()
+    }
+
+    /**
+     * 分页查询用户列表
+     *
+     * @param page 分页
+     * @param deptId 部门ID
+     * @param role 角色
+     * @return page
+     */
+    @GetMapping("/list")
+    fun list(page: Page<UserVo>, deptId: Int?, role: Role?): ResultData<IPage<UserVo>> {
+        var allChildId: List<Int> = emptyList()
+        if (deptId == null) return emptyResultData()
+        return emptyResultData()
     }
 
     /**
