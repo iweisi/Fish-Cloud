@@ -1,52 +1,52 @@
-version: '1.0.0'
+version: '2'
 services:
 
-  fish-register:
+  fish-registry:
+    image: fish-registry
+    container_name: fish-registry
     build:
-      context: ./
-      dockerfile: ./fish-register/Dockerfile
+      context: ./fish-registry/target
+      dockerfile: ../Dockerfile
     restart: always
-    container_name: fish-register
-    image: fish-register
     ports:
       - 8000:8000
 
   fish-config:
-    build:
-      context: ./
-      dockerfile: ./fish-config/Dockerfile
-    restart: always
-    container_name: fish-config
     image: fish-config
+    container_name: fish-config
+    build:
+      context: ./fish-config/target
+      dockerfile: ../Dockerfile
+    restart: always
     ports:
       - 8010:8010
 
   fish-auth:
-    build:
-      context: ./
-      dockerfile: ./fish-auth/fish-auth-server/Dockerfile
-    restart: always
-    container_name: fish-auth
     image: fish-auth
+    container_name: fish-auth
+    build:
+      context: ./fish-auth/fish-auth-server/target
+      dockerfile: ../Dockerfile
+    restart: always
     ports:
       - 8020:8020
 
   fish-admin:
-    build:
-      context: ./
-      dockerfile: ./fish-admin/fish-admin-server/Dockerfile
-    restart: always
-    container_name: fish-admin
     image: fish-admin
+    container_name: fish-admin
+    build:
+      context: ./fish-admin/fish-admin-server/target
+      dockerfile: ../Dockerfile
+    restart: always
     ports:
       - 8100:8100
 
   fish-gateway:
-    build:
-      context: ./
-      dockerfile: ./fish-gateway/Dockerfile
-    restart: always
     image: fish-gateway
     container_name: fish-gateway
+    build:
+      context: ./fish-gateway/target
+      dockerfile: ../Dockerfile
+    restart: always
     ports:
       - 8080:8080
