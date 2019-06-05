@@ -6,7 +6,8 @@
 
 > 基于 Spring Cloud Greenwich 微服务框架开发<br/>
 > 脱离Java语法的束缚, 使用Kotlin语言编写, 享受Kotlin带来的便捷<br/>
-> 使用现代化的函数式编码, 如Lambda、 Java Stream Api、 Kotlin 高阶函数
+> 使用现代化的函数式编码, 如Lambda、 Java Stream Api、 Kotlin 高阶函数<br/>
+> 提供对 Docker 容器环境运行的支持, 可使用 Docker Compose、 Kubernetes 编排
 
 ## 依赖环境
 依赖 | 版本
