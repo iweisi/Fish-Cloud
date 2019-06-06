@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass
 import org.springframework.http.HttpStatus
 import org.springframework.http.converter.HttpMessageNotReadableException
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.validation.BindException
 import org.springframework.web.HttpRequestMethodNotSupportedException
 import org.springframework.web.bind.MethodArgumentNotValidException
@@ -47,7 +48,7 @@ class ControllerExceptionHandler {
     @ConditionalOnClass(AccessDeniedException::class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     fun accessDeniedException(exception: Exception): ResultData<Boolean> {
-        return ResultData.err(false, "无资源访问权限")
+        return ResultData.err(false, "无访问权限")
     }
 
     /**
